@@ -6,8 +6,8 @@
 # 
 # @see http://en.wikipedia.org/wiki/Batman
 
-Villian = Struct.new :name
-Superhero = Struct.new :name, :origin, :nemesis
+Villian = Struct.new :name, :nemesis
+Superhero = Struct.new :name, :origin, :nemesis, :alter_ego, :nick_name
 AlterEgo = Struct.new :name, :superhero
 
 describe Villian do
@@ -15,7 +15,7 @@ describe Villian do
   #
   # This is an example of RSpec's let helper method.
   # 
-  # Here we are saying: For these examples like any references to `joker` return
+  # Here we are saying: For these examples like any references to `batman` return
   # the value returned between the two mustaches (the block).
   # 
   # @see https://www.relishapp.com/rspec/rspec-core/docs/helper-methods/let-and-let
@@ -29,7 +29,7 @@ describe Villian do
   #
   # @see https://www.relishapp.com/rspec/rspec-core/docs/subject/explicit-subject
   #
-  subject { Villian.new "Joker" }
+  subject { Villian.new "Joker", batman }
   
   
   it "should have the correct name" do
@@ -77,7 +77,7 @@ describe Superhero do
   #
   # @see https://www.relishapp.com/rspec/rspec-core/docs/subject/explicit-subject
   #
-  subject { Superhero.new "Batman", "Gotham City", joker }
+  subject { Superhero.new "Batman", "Gotham City", joker, bruce_wayne, "The Caped Crusader" }
   
   it "should have a name" do
     subject.should respond_to :name
